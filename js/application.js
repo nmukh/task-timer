@@ -18,6 +18,7 @@ $(document).ready(function() {
 			},
 
 			resetTaskState:function(){
+				this.resetTaskStateClassNames();
 				return this.each(function() {
 					jQuery(this).data('taskStateIndex', 0)
 					.addClass(jQuery.fn.taskStates[0]);
@@ -41,14 +42,17 @@ $(document).ready(function() {
 		});
 	})(jQuery);
 
-	$('.completion a').on("click", function() {
+	$('.completion').on("click", 'a', function(event) {
 		$(this).toggleTaskState();
 		return false;
 	});
 
 	$('#add').click(function(){
 		var taskItem = $('#tasks ul li:first').clone();
-		taskItem.find('form')[0].reset();
+		taskItem
+			.find('.completion a').resetTaskState()
+		.end()
+			.find('input[type="text"]').val("");
 		$('#tasks ul').append(taskItem);
 		taskItem.find('input[type="text"]:first').focus();
 		return false;
@@ -56,7 +60,7 @@ $(document).ready(function() {
 
 	$('#add').click().click();
 
-	$('#tasks ul').sortable({handle: ".handle"});
+	$('#tasks ul').sortable({handle: ".handle"}).disableSelection();
 
 	$('input[type="text"]:first').focus();
 });
