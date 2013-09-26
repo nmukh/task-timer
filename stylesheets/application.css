@@ -20,14 +20,14 @@ body #timer a.button {
 
 body #timer a.button:hover {
   cursor: pointer;
-  cursor: hand; }
+  }
 
 body #timer a#button-25 {
     width: 72px;
     height: 72px;
     top: 15px;
     left: 20px;
-    background-image: url(../images/button-25.png); }
+    background-image: url(../images/button-25.png); } 
 
 body #timer a#button-25:hover {
   background-image: url(../images/button-25-hover.png); }
@@ -146,5 +146,4 @@ body #timer a#button-25:hover {
     float: right;
     margin: 7px 16px 0 0;
     background-image: url(../images/add.png);
-    cursor: pointer;
-    cursor: hand; }
+    cursor: pointer; }
